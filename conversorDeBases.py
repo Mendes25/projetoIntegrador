@@ -4,7 +4,7 @@
 # print(12412%16) é o que sobra da divisão, aqui o resultado é 12 
 # print(12412//16) é a quantidade de vezes em que o 16 foi multiplicado, aqui seria 775
 
-numero=input("Insira o número que você deseja: ")
+numero=int(input("Insira o número que você deseja: "))
 
 def conversao_decimal_para_hexadecimal(numero): 
     hexadecimalList=[]
@@ -17,12 +17,12 @@ def conversao_decimal_para_hexadecimal(numero):
         15:"d"
     }
     
-    numero=int(numero)
-
     while numero <0:
         numero//16
         print(numero)
-conversao_decimal_para_hexadecimal(numero)
+        
+    return numero
+print(conversao_decimal_para_hexadecimal(numero))
 
 
         
