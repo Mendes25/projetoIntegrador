@@ -1,31 +1,53 @@
 # converta número da base decimal para hexadecimal 
 # converta número da base hexadecimal para decimal
-# reverse
-# print(12412%16) é o que sobra da divisão, aqui o resultado é 12 
-# print(12412//16) é a quantidade de vezes em que o 16 foi multiplicado, aqui seria 775
 
-numero=int(input("Insira o número que você deseja: "))
+def decimal_para_hexadecimal(numero_decimal):
+    # Função para converter decimal para hexadecimal
+    hexadecimal = ""
+    hex_digitos = "0123456789ABCDEF"
 
-def conversao_decimal_para_hexadecimal(numero): 
-    hexadecimalList=[]
-    numeroDict={
-        10:"a",
-        11:"b",
-        12:"c",
-        13:"d",
-        14:"e",
-        15:"d"
-    }
-    
-    while numero <0:
-        numero//16
-        print(numero)
+    while numero_decimal > 0:
+        resto = numero_decimal % 16
+        hexadecimal = hex_digitos[resto] + hexadecimal
+        numero_decimal //= 16
+
+    return hexadecimal
+
+def hexadecimal_para_decimal(numero_hexadecimal):
+    # Função para converter hexadecimal para decimal
+    decimal = 0
+    for digito in numero_hexadecimal:
+        if digito.isdigit():
+            valor = int(digito)
+        else:
+            valor = ord(digito.upper()) - ord('A') + 10
+        decimal = decimal * 16 + valor
+    return decimal
+
+def main():
+    # Função principal 
+    while True:
+        print("Escolha uma opção:")
+        print("1. Converter decimal para hexadecimal")
+        print("2. Converter hexadecimal para decimal")
+        print("3. Sair")
         
-    return numero
-print(conversao_decimal_para_hexadecimal(numero))
-
-
+        opcao = input("Digite o número da opção desejada: ")
         
+        if opcao == "1":
+            numero_decimal = int(input("Digite o número decimal: "))
+            print("Hexadecimal:", decimal_para_hexadecimal(numero_decimal))
+        elif opcao == "2":
+            numero_hexadecimal = input("Digite o número hexadecimal: ")
+            print("Decimal:", hexadecimal_para_decimal(numero_hexadecimal))
+        elif opcao == "3":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+# Chamar a função principal
+main()
 
 
 
