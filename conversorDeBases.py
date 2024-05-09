@@ -1,22 +1,22 @@
 # converta número da base decimal para hexadecimal 
 # converta número da base hexadecimal para decimal
 
-def decimal_para_hexadecimal(numero_decimal):
+def decimalParaHexadecimal(numeroDecimal):
     # Função para converter decimal para hexadecimal
     hexadecimal = ""
-    hex_digitos = "0123456789ABCDEF"
+    hexDigitos = "0123456789ABCDEF"
 
-    while numero_decimal > 0:
-        resto = numero_decimal % 16
-        hexadecimal = hex_digitos[resto] + hexadecimal
-        numero_decimal //= 16
+    while numeroDecimal > 0:
+        resto = numeroDecimal % 16
+        hexadecimal = hexDigitos[resto] + hexadecimal
+        numeroDecimal //= 16
 
     return hexadecimal
 
-def hexadecimal_para_decimal(numero_hexadecimal):
+def hexadecimalParaDecimal(numeroHexadecimal):
     # Função para converter hexadecimal para decimal
     decimal = 0
-    for digito in numero_hexadecimal:
+    for digito in numeroHexadecimal:
         if digito.isdigit():
             valor = int(digito)
         else:
@@ -24,23 +24,71 @@ def hexadecimal_para_decimal(numero_hexadecimal):
         decimal = decimal * 16 + valor
     return decimal
 
+def decimalParaOctal(numeroDecimal):
+    # Função para converter decimal para octal
+    octal = ""
+    while numeroDecimal > 0:
+        resto = numeroDecimal % 8
+        octal = str(resto) + octal
+        numeroDecimal //= 8
+    return octal
+
+def octalParaDecimal(numeroOctal):
+    # Função para converter octal para decimal
+    decimal = 0
+    for digito in numeroOctal:
+        decimal = decimal * 8 + int(digito)
+    return decimal
+
+def decimalParaBinario(numeroDecimal):
+    # Função para converter decimal para binário
+    binario = ""
+    while numeroDecimal > 0:
+        resto = numeroDecimal % 2
+        binario = str(resto) + binario
+        numeroDecimal //= 2
+    return binario
+
+def binarioParaDecimal(numeroBinario):
+    # Função para converter binário para decimal
+    decimal = 0
+    for digito in numeroBinario:
+        decimal = decimal * 2 + int(digito)
+    return decimal
+
 def main():
     # Função principal 
     while True:
         print("Escolha uma opção:")
         print("1. Converter decimal para hexadecimal")
-        print("2. Converter hexadecimal para decimal")
-        print("3. Sair")
+        print("2. Converter decimal para octal")
+        print("3. Converter decimal para binário")
+        print("4. Converter hexadecimal para decimal")
+        print("5. Converter octal para decimal")
+        print("6. Converter binário para decimal")
+        print("7. Sair")
         
         opcao = input("Digite o número da opção desejada: ")
         
         if opcao == "1":
-            numero_decimal = int(input("Digite o número decimal: "))
-            print("Hexadecimal:", decimal_para_hexadecimal(numero_decimal))
+            numeroDecimal = int(input("Digite o número decimal: "))
+            print("Hexadecimal:", decimalParaHexadecimal(numeroDecimal))
         elif opcao == "2":
-            numero_hexadecimal = input("Digite o número hexadecimal: ")
-            print("Decimal:", hexadecimal_para_decimal(numero_hexadecimal))
+            numeroDecimal = int(input("Digite o número decimal: "))
+            print("Octal:", decimalParaOctal(numeroDecimal))
         elif opcao == "3":
+            numeroDecimal = int(input("Digite o número decimal: "))
+            print("Binário:", decimalParaBinario(numeroDecimal))
+        elif opcao == "4":
+            numeroHexadecimal = input("Digite o número hexadecimal: ")
+            print("Decimal:", hexadecimalParaDecimal(numeroHexadecimal))
+        elif opcao == "5":
+            numeroOctal = input("Digite o número octal: ")
+            print("Decimal:", octalParaDecimal(numeroOctal))
+        elif opcao == "6":
+            numeroBinario = input("Digite o número binário: ")
+            print("Decimal:", binarioParaDecimal(numeroBinario))
+        elif opcao == "7":
             print("Saindo...")
             break
         else:
